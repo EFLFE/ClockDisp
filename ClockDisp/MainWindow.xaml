@@ -54,5 +54,16 @@
             <Image x:Name="d_3_5" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
             <Image x:Name="d_3_6" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
         </Grid>
+        <Image x:Name="week_day" HorizontalAlignment="Left" Height="75" Margin="145,281,0,0" VerticalAlignment="Top" Width="104" Source="Resources/button/week-day.png" MouseDown="OnWeekDayClick"/>
+        <Image x:Name="bell" HorizontalAlignment="Left" Height="71" Margin="402,285,0,0" VerticalAlignment="Top" Width="67" Source="Resources/button/bell.png" MouseDown="OnBellClick"/>
+        <Image x:Name="friday" HorizontalAlignment="Left" Height="39" Margin="159,193,0,0" VerticalAlignment="Top" Width="53" Source="Resources/button/friday.png" MouseDown="OnFridayClick"/>
+        <Image x:Name="monday" HorizontalAlignment="Left" Height="38" Margin="169,108,0,0" VerticalAlignment="Top" Width="60" Source="Resources/button/monday.png" MouseDown="OnMondayClick"/>
+        <Image x:Name="program" HorizontalAlignment="Left" Height="75" Margin="604,282,0,0" VerticalAlignment="Top" Width="108" Source="Resources/button/program.png" MouseDown="OnProgramClick"/>
+        <Image x:Name="timer" HorizontalAlignment="Left" Height="73" Margin="741,283,0,0" VerticalAlignment="Top" Width="76" Source="Resources/button/timer.png" MouseDown="OnTimerClick"/>
+        <Image x:Name="saturday" HorizontalAlignment="Left" Height="41" Margin="207,193,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/saturday.png" MouseDown="OnSaturdayClick"/>
+        <Image x:Name="sunday" HorizontalAlignment="Left" Height="40" Margin="177,236,0,0" VerticalAlignment="Top" Width="54" Source="Resources/button/sunday.png" MouseDown="OnSundayClick"/>
+        <Image x:Name="thursday" HorizontalAlignment="Left" Height="41" Margin="212,150,0,0" VerticalAlignment="Top" Width="52" Source="Resources/button/thursday.png" MouseDown="OnThursdayClick"/>
+        <Image x:Name="tuesday" HorizontalAlignment="Left" Height="41" Margin="212,107,0,0" VerticalAlignment="Top" Width="58" Source="Resources/button/tuesday.png" MouseDown="OnTuesdayClick"/>
+        <Image x:Name="wendesday" HorizontalAlignment="Left" Height="41" Margin="166,150,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/wendesday.png" MouseDown="OnWendesdayClick"/>
     </Grid>
 </Window>
