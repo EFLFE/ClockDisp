@@ -29,9 +29,9 @@
         </Grid>
         <Grid HorizontalAlignment="Left" Height="171" Margin="399,107,0,0" VerticalAlignment="Top" Width="113">
             <Image x:Name="d_1_0" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
-            <Image x:Name="d_1_1" HorizontalAlignment="Left" Height="81" Margin="9,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
-            <Image x:Name="d_1_2" HorizontalAlignment="Left" Height="79" Margin="77,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
-            <Image x:Name="d_1_3" HorizontalAlignment="Left" Height="23" Margin="20,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
+            <Image x:Name="d_1_1" HorizontalAlignment="Left" Height="81" Margin="10,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
+            <Image x:Name="d_1_2" HorizontalAlignment="Left" Height="79" Margin="78,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
+            <Image x:Name="d_1_3" HorizontalAlignment="Left" Height="23" Margin="21,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
             <Image x:Name="d_1_4" HorizontalAlignment="Left" Height="79" Margin="1,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
             <Image x:Name="d_1_5" HorizontalAlignment="Left" Height="78" Margin="70,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
             <Image x:Name="d_1_6" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
