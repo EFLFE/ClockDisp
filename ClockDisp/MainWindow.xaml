@@ -70,6 +70,11 @@
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="OnExitClick"/>
             </MenuItem>
+            <MenuItem Header="COM">
+                <MenuItem Header="Settings" Click="OnOpenCOMSettings"/>
+                <MenuItem x:Name="menuComOpen" Header="Open" Click="OnOpenPort" IsEnabled="False"/>
+                <MenuItem x:Name="menuComClose" Header="Close" Click="OnClosePort" IsEnabled="False"/>
+            </MenuItem>
         </Menu>
 
         <Grid HorizontalAlignment="Left" Height="90" Margin="0,380,0,0" VerticalAlignment="Top" Width="1000">
