@@ -75,6 +75,9 @@
                 <MenuItem x:Name="menuComOpen" Header="Open" Click="OnOpenPort" IsEnabled="False"/>
                 <MenuItem x:Name="menuComClose" Header="Close" Click="OnClosePort" IsEnabled="False"/>
             </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Check update" Click="OnCheckUpdate"/>
+            </MenuItem>
         </Menu>
 
         <Grid HorizontalAlignment="Left" Height="90" Margin="0,380,0,0" VerticalAlignment="Top" Width="1000">

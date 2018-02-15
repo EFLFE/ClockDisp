@@ -124,5 +124,10 @@ namespace ClockDisp
         {
             Compot.ClosePort();
         }
+
+        private void OnCheckUpdate(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
