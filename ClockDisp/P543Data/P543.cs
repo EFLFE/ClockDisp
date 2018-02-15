@@ -17,22 +17,30 @@ namespace ClockDisp.P543Data
             CLR_WHITE_ROAD = 22,
             CLR_RED_ROAD = 24;
 
+        // index, flag
         public event Action<int, bool> OnRoadSignal;
-        public event Action<int, bool> OnCellSignal;
 
+        // cellIndex, clrIndex, flag
+        public event Action<int, int, bool> OnCellSignal;
+
+        private readonly int[] roadPairs;
         private readonly bool[] roads;
-        private readonly Cell cell_1, cell_2, cell_3, cell_4, cell_5, cell_6;
+        private readonly Cell[] cells;
 
         public P543()
         {
             // слева на право
+            roadPairs = new int[] { 4, 7, 9, 11, 13, 14, 15, 16, 17, 18, 20, 23 };
             roads = new bool[ROADS_COUNT + 1];
-            cell_1 = new Cell(Yellow | Gray | Green | Cyan | Red | Blue | Magenta | White);
-            cell_2 = new Cell(Yellow | Green | Cyan | Blue | White | Red | Magenta);
-            cell_3 = new Cell(Yellow | Green | Cyan | Blue | White | Red | Magenta | Orange);
-            cell_4 = new Cell(Orange);
-            cell_5 = new Cell(Yellow | Green | Cyan | Blue | White | Red | Magenta | Orange);
-            cell_6 = new Cell(Yellow | Green | Cyan | Blue | White | Red | Magenta | Orange);
+            cells = new Cell[]
+            {
+                new Cell(Yellow | Gray | Green | Cyan | Red | Blue | Magenta | White),
+                new Cell(Yellow | Green | Cyan | Blue | White | Red | Magenta),
+                new Cell(Yellow | Green | Cyan | Blue | White | Red | Magenta | Orange),
+                new Cell(Orange),
+                new Cell(Yellow | Green | Cyan | Blue | White | Red | Magenta | Orange),
+                new Cell(Yellow | Green | Cyan | Blue | White | Red | Magenta | Orange),
+            };
         }
 
         public void SendSignal(int roadIndex, byte flag) => SendSignal(roadIndex, flag > 0);
@@ -43,7 +51,7 @@ namespace ClockDisp.P543Data
                 return;
 
             roads[roadIndex] = flag;
-            OnRoadSignal.Invoke(roadIndex, flag);
+            OnRoadSignal(roadIndex, flag);
 
             // установка цветоного сегмента?
             switch (roadIndex)
@@ -89,46 +97,14 @@ namespace ClockDisp.P543Data
         private void SetSegment(int clrIndex, bool flag)
         {
             // поиск подключенных сегметов (парные дорожки) и установка свечения в нём цветоного сегмента
-            if (roads[4] && roads[7])
+            for (int i = 0, j = 0; i < roadPairs.Length; i += 2, j++)
             {
-                if (cell_1.SendSignal(clrIndex, flag))
+                if (roads[roadPairs[i]] && roads[roadPairs[i + 1]])
                 {
-                    OnCellSignal(clrIndex, flag);
-                }
-            }
-            if (roads[9] && roads[11])
-            {
-                if (cell_2.SendSignal(clrIndex, flag))
-                {
-                    OnCellSignal(clrIndex, flag);
-                }
-            }
-            if (roads[13] && roads[14])
-            {
-                if (cell_3.SendSignal(clrIndex, flag))
-                {
-                    OnCellSignal(clrIndex, flag);
-                }
-            }
-            if (roads[15] && roads[16])
-            {
-                if (cell_4.SendSignal(clrIndex, flag))
-                {
-                    OnCellSignal(clrIndex, flag);
-                }
-            }
-            if (roads[17] && roads[18])
-            {
-                if (cell_5.SendSignal(clrIndex, flag))
-                {
-                    OnCellSignal(clrIndex, flag);
-                }
-            }
-            if (roads[20] && roads[23])
-            {
-                if (cell_6.SendSignal(clrIndex, flag))
-                {
-                    OnCellSignal(clrIndex, flag);
+                    if (cells[j].SendSignal(clrIndex, flag))
+                    {
+                        OnCellSignal(j, clrIndex, flag);
+                    }
                 }
             }
         }
