@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="ClockDisp"
         Width="1006"
-        Height="498.75"
-        ResizeMode="NoResize"
-        WindowStyle="ToolWindow"
+        Height="498"
+        ResizeMode="CanMinimize"
+        WindowStyle="SingleBorderWindow"
         WindowStartupLocation="CenterScreen" Background="Black" Foreground="White">
     <Grid>
         <Image HorizontalAlignment="Left" Height="476" VerticalAlignment="Top" Width="1000" Source="pack://siteoforigin:,,,/Resources/IndicatorOff2.jpg"  d:IsLocked="True"/>
@@ -65,5 +65,42 @@
         <Image x:Name="thursday" HorizontalAlignment="Left" Height="41" Margin="212,150,0,0" VerticalAlignment="Top" Width="52" Source="Resources/button/thursday.png" MouseDown="OnThursdayClick"/>
         <Image x:Name="tuesday" HorizontalAlignment="Left" Height="41" Margin="212,107,0,0" VerticalAlignment="Top" Width="58" Source="Resources/button/tuesday.png" MouseDown="OnTuesdayClick"/>
         <Image x:Name="wendesday" HorizontalAlignment="Left" Height="41" Margin="166,150,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/wendesday.png" MouseDown="OnWendesdayClick"/>
+
+        <Menu Height="21" VerticalAlignment="Top" Panel.ZIndex="2">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Click="OnExitClick"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid HorizontalAlignment="Left" Height="90" Margin="0,380,0,0" VerticalAlignment="Top" Width="1000">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#00000000" Offset="0"/>
+                    <GradientStop Color="#BF000000" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock x:Name="road_4" HorizontalAlignment="Left" Margin="144,24,0,0" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_5" HorizontalAlignment="Left" Margin="168,24,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_6" HorizontalAlignment="Left" Margin="195,24,0,0" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_7" HorizontalAlignment="Left" Margin="222,24,0,0" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_8" HorizontalAlignment="Left" Margin="246,24,0,0" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_9" HorizontalAlignment="Left" Margin="274,24,0,0" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_10" HorizontalAlignment="Left" Margin="294,24,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_11" HorizontalAlignment="Left" Margin="324,24,0,0" TextWrapping="Wrap" Text="11" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_12" HorizontalAlignment="Left" Margin="351,24,0,0" TextWrapping="Wrap" Text="12" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_13" HorizontalAlignment="Left" Margin="404,24,0,0" TextWrapping="Wrap" Text="13" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_14" HorizontalAlignment="Left" Margin="462,24,0,0" TextWrapping="Wrap" Text="14" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_15" HorizontalAlignment="Left" Margin="516,24,0,0" TextWrapping="Wrap" Text="15" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_16" HorizontalAlignment="Left" Margin="573,24,0,0" TextWrapping="Wrap" Text="16" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_17" HorizontalAlignment="Left" Margin="626,24,0,0" TextWrapping="Wrap" Text="17" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_18" HorizontalAlignment="Left" Margin="678,24,0,0" TextWrapping="Wrap" Text="18" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_19" HorizontalAlignment="Left" Margin="704,24,0,0" TextWrapping="Wrap" Text="19" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_20" HorizontalAlignment="Left" Margin="732,24,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_21" HorizontalAlignment="Left" Margin="757,24,0,0" TextWrapping="Wrap" Text="21" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_22" HorizontalAlignment="Left" Margin="784,24,0,0" TextWrapping="Wrap" Text="22" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_23" HorizontalAlignment="Left" Margin="812,24,0,0" TextWrapping="Wrap" Text="23" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+            <TextBlock x:Name="road_24" HorizontalAlignment="Left" Margin="838,24,0,0" TextWrapping="Wrap" Text="24" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
+        </Grid>
+
     </Grid>
 </Window>
