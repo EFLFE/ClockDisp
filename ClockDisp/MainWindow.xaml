@@ -76,7 +76,7 @@
                 <MenuItem x:Name="menuComClose" Header="Close" Click="OnClosePort" IsEnabled="False"/>
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="Check update" Click="OnCheckUpdate"/>
+                <MenuItem x:Name="menuGetUpdate" Header="Check update" Click="OnDownloadNewVersion"/>
             </MenuItem>
         </Menu>
 

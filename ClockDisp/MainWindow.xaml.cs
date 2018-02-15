@@ -16,12 +16,32 @@ namespace ClockDisp
         public MainWindow()
         {
             InitializeComponent();
+
             Compot.OnPortCreated += () =>
             {
                 Dispatcher.Invoke(() =>
                 {
                     menuComOpen.IsEnabled = true;
                     menuComClose.IsEnabled = true;
+                });
+            };
+
+            Updater.OnDetectedNewVersion += (data) =>
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    menuGetUpdate.Header = "Get update";
+
+                    MessageBoxResult rez = MessageBox.Show(
+                        $"{data.Name} {data.Ver.ToString(3)}\r\n\r\nDownload now?",
+                        "New version detected",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Information);
+
+                    if (rez == MessageBoxResult.Yes)
+                    {
+                        OnDownloadNewVersion(null, null);
+                    }
                 });
             };
 
@@ -125,9 +145,14 @@ namespace ClockDisp
             Compot.ClosePort();
         }
 
-        private void OnCheckUpdate(object sender, RoutedEventArgs e)
+        private void OnDownloadNewVersion(object sender, RoutedEventArgs e)
         {
-
+            if (Updater.LastData == null)
+            {
+                Updater.ResetTimer();
+                return;
+            }
+            System.Diagnostics.Process.Start(Updater.LastData.AsserDownloadUrl);
         }
     }
 }
