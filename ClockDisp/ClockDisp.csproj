@@ -70,7 +70,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="P543.cs" />
+    <Compile Include="P543Data\Cell.cs" />
+    <Compile Include="P543Data\ColorIndexset.cs" />
+    <Compile Include="P543Data\P543.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
