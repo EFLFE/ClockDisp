@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
+using ClockDisp.P543Data;
 
 namespace ClockDisp
 {
@@ -12,10 +10,17 @@ namespace ClockDisp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private P543 p543;
+
         // конструктор
         public MainWindow()
         {
             InitializeComponent();
+            p543 = new P543();
+            p543.OnRoadSignal += P543_OnRoadSignal;
+            p543.OnCellSignal += P543_OnCellSignal;
+
+            ThreadPool.QueueUserWorkItem(ReadingQueueDataPool);
 
             Compot.OnPortCreated += () =>
             {
@@ -30,6 +35,7 @@ namespace ClockDisp
             {
                 Dispatcher.Invoke(() =>
                 {
+                    // TODO
                     menuGetUpdate.Header = "Get update";
 
                     MessageBoxResult rez = MessageBox.Show(
@@ -57,6 +63,31 @@ namespace ClockDisp
             bell.Hide();
             program.Hide();
             timer.Hide();
+        }
+
+        private void ReadingQueueDataPool(object _)
+        {
+            while (true)
+            {
+                Thread.Sleep(10);
+
+                while (Compot.OutBuffer.Count > 0)
+                {
+                    string outData = Compot.OutBuffer.Dequeue();
+                }
+            }
+        }
+
+        private void P543_OnCellSignal(int arg1, int arg2, bool arg3)
+        {
+            // TODO
+            throw new System.NotImplementedException();
+        }
+
+        private void P543_OnRoadSignal(int arg1, bool arg2)
+        {
+            // TODO
+            throw new System.NotImplementedException();
         }
 
         // [БУД]

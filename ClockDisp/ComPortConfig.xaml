@@ -41,8 +41,8 @@
         <ComboBox x:Name="portBox" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top" Width="109" IsEditable="True"/>
         <Button x:Name="apply" Content="Apply" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="83" Click="apply_Click"/>
         <Button x:Name="cancel" Content="Cancel" HorizontalAlignment="Left" Margin="120,238,0,0" VerticalAlignment="Top" Width="83" Click="cancel_Click"/>
-        <TextBox x:Name="readTimeoutBox" HorizontalAlignment="Left" Height="23" Margin="94,172,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="109"/>
-        <TextBox x:Name="writeTimeoutBox" HorizontalAlignment="Left" Height="23" Margin="94,200,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="109"/>
+        <TextBox x:Name="readTimeoutBox" HorizontalAlignment="Left" Height="23" Margin="94,172,0,0" TextWrapping="Wrap" Text="-1" VerticalAlignment="Top" Width="109"/>
+        <TextBox x:Name="writeTimeoutBox" HorizontalAlignment="Left" Height="23" Margin="94,200,0,0" TextWrapping="Wrap" Text="-1" VerticalAlignment="Top" Width="109"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,172,0,0" TextWrapping="Wrap" Text="Read timeout:" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,200,0,0" TextWrapping="Wrap" Text="Write timeout:" VerticalAlignment="Top"/>
 
