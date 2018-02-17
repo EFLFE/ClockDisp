@@ -6,6 +6,7 @@ using System.Windows;
 
 namespace ClockDisp.Register
 {
+    // чтение данных с порта
     internal static class Compot
     {
         public static event Action OnPortCreated;

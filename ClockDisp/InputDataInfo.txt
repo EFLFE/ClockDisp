@@ -11,3 +11,22 @@ http://codius.ru/articles/Arduino_Сдвиговый_регистр_74НС595_и
 
 Ардуино: динамическая индикация
 http://robotclass.ru/tutorials/arduino-dynamic-led-indication/
+
+
+
+
+scr
+for(byte i = 0; i <= 3; i++)
+{
+	digitalWrite(RCLK, LOW); // открываем защелку
+	    shiftOut(DIO, SCLK, MSBFIRST, digit[digitBuffer[i]]);  // отправляем байт с "числом"
+	    shiftOut(DIO, SCLK, MSBFIRST, chr[i]);   // включаем разряд
+	digitalWrite(RCLK, HIGH); // защелкиваем регистры
+	delay(1); // ждем немного перед отправкой следующего "числа"
+}
+
+== API ==
+
+LockCatch(bool flag_on_off)
+WriteDigit(byte data)
+WriteDischarge(byte data)

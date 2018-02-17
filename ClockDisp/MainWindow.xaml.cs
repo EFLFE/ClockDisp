@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using ClockDisp.P543Data;
@@ -64,13 +65,65 @@ namespace ClockDisp
             bell.Hide();
             program.Hide();
             timer.Hide();
+
+            digits = new UIElement[4][];
+            digits[0] = new UIElement[7] { a1, b1, c1, d1, e1, f1, g1 };
+            digits[1] = new UIElement[7] { a2, b2, c2, d2, e2, f2, g2 };
+            digits[2] = new UIElement[7] { a3, b3, c3, d3, e3, f3, g3 };
+            digits[3] = new UIElement[7] { a4, b4, c4, d4, e4, f4, g4 };
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    digits[i][j].Hide();
+                }
+            }
         }
 
         private void ReadingQueueDataPool(object _)
         {
+            const int delay = 500;
+            int d1 = 0;
+            int d2 = 0;
+            int d3 = 0;
+            int d4 = 0;
+
             while (true)
             {
-                Thread.Sleep(10);
+                buffer[0] = Exts.DigitToBit(d1);
+                buffer[1] = Exts.DigitToBit(d2);
+                buffer[2] = Exts.DigitToBit(d3);
+                buffer[3] = Exts.DigitToBit(d4);
+
+                Thread.Sleep(delay);
+                Dispatcher.Invoke(() => SimulatePrintTime(0));
+
+                Thread.Sleep(delay);
+                Dispatcher.Invoke(() => SimulatePrintTime(1));
+
+                Thread.Sleep(delay);
+                Dispatcher.Invoke(() => SimulatePrintTime(2));
+
+                Thread.Sleep(delay);
+                Dispatcher.Invoke(() => SimulatePrintTime(3));
+
+                if (++d1 > 9)
+                {
+                    d1 = 0;
+                    if (++d2 > 9)
+                    {
+                        d2 = 0;
+                        if (++d3 > 9)
+                        {
+                            d3 = 0;
+                            if (++d4 > 9)
+                            {
+                                d4 = 0;
+                            }
+                        }
+                    }
+                }
 
                 while (Compot.OutBuffer.Count > 0)
                 {
@@ -89,6 +142,37 @@ namespace ClockDisp
         {
             // TODO P543_OnRoadSignal
             throw new System.NotImplementedException();
+        }
+
+        private UIElement[][] digits;
+        // 13:46
+        private byte[] buffer = new byte[4];
+
+        private void SimulatePrintTime(int discharge)
+        {
+            // каждый разряд
+            for (int i = 0; i < 4; i++)
+            {
+                // каждый сегмент
+                for (int j = 0; j < 7; j++)
+                {
+                    if (i == discharge)
+                    {
+                        // каждый бит числа
+                        for (int z = 0; z < 7; z++)
+                        {
+                            if (Exts.IsBitSet(buffer[i], z))
+                                digits[i][6 - z].Show();
+                            else
+                                digits[i][6 - z].Hide();
+                        }
+                    }
+                    else
+                    {
+                        digits[i][j].HideSmooth();
+                    }
+                }
+            }
         }
 
         // [БУД]
