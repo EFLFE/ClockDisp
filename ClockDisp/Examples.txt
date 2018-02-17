@@ -1,0 +1,231 @@
+﻿#define SCLK 7  // пины ардуины
+#define RCLK 6  // Пин подключен к SH_CP входу 74HC595
+#define DIO 5   // Пин подключен к DS входу 74HC595
+
+byte digitBuffer[4];
+
+void setup(){
+  pinMode(RCLK, OUTPUT);
+  pinMode(SCLK, OUTPUT);
+  pinMode(DIO, OUTPUT);
+}
+
+
+void loop(){
+  // заполняем массив
+  digitBuffer[0] = 1;
+  digitBuffer[1] = 2;
+  digitBuffer[2] = 3;
+  digitBuffer[3] = 4;
+
+  // однократно выводим данные из массива на 7сигмент
+  // тоесть функция должна постоянно крутится.
+  showDisplay();
+
+}
+
+void showDisplay(){
+
+  const byte digit[10] = {  // маска для 7 сигментного индикатора
+	  0b11000000, // 0
+	  0b11111001, // 1
+	  0b10100100, // 2
+	  0b10110000, // 3
+	  0b10011001, // 4
+	  0b10010010, // 5
+	  0b10000010, // 6
+	  0b11111000, // 7
+	  0b10000000, // 8
+	  0b10010000, // 9
+  };
+
+  const byte chr[4] = { // маска для разряда
+	  0b00001000,
+	  0b00000100,
+	  0b00000010,
+	  0b00000001
+  };
+
+  // отправляем в цикле по два байта в сдвиговые регистры
+  for(byte i = 0; i <= 3; i++){
+	digitalWrite(RCLK, LOW); // открываем защелку
+	  shiftOut(DIO, SCLK, MSBFIRST, digit[digitBuffer[i]]);  // отправляем байт с "числом"
+	  shiftOut(DIO, SCLK, MSBFIRST, chr[i]);   // включаем разряд
+	digitalWrite(RCLK, HIGH); // защелкиваем регистры
+	delay(1); // ждем немного перед отправкой следующего "числа"
+  }
+}
+
+// ============================================ //
+
+#include <Wire.h>
+
+#define DS3231_I2C_ADDRESS 0x68
+
+const uint8_t DIG[] = {A0, A1, A2, A3}; /// странно, но не поругалось.
+const uint8_t SEG[] = {7, 8, 9, 10, 11, 12, 13}; /// ноги индикатора
+const uint8_t NUM[] = { 0b00100000, 0b01110101, 0b00001001, /// маска для сегментов
+0b00010001, 0b01010100, 0b00010010,
+0b00000010, 0b00110101, 0b00000000,
+0b00010000
+};
+const uint8_t CHR[4] = { // маска для разряда
+0b11111110,
+0b11111101,
+0b11111011,
+0b11110111
+};
+
+/*
+const uint8_t CHR[4] = { // маска для разряда (INV)
+0b00000001,
+0b00000010,
+0b00000100,
+0b00001000
+};
+
+---
+
+const uint8_t CHR[6] = { // маска для разряда
+0b00000001,
+0b00000010,
+0b00000100, //секунды
+0b00001000
+0b00010000,
+0b00100000, //дни недели и будильник
+};
+*/
+
+void showNumber(uint8_t num)
+{ // включает выходы ардуны, которые в
+for (uint8_t i = 0; i < 7; i++)
+{
+// SEG[] в зависимости от NUM[]
+if (bitRead(NUM[num], i) == 1)
+	digitalWrite(SEG[i], HIGH);
+else
+	digitalWrite(SEG[i], LOW);
+}
+}
+void showDigit(uint8_t num)
+{ // включает выходы DIG[] в зависимости от CHR[]
+for (uint8_t i = 0; i < 4; i++)
+{
+if (bitRead(CHR[num], i) == 1)
+	digitalWrite(DIG[i], HIGH);
+else
+	digitalWrite(DIG[i], LOW);
+}
+}
+///////////////////
+///// часы ..
+byte decToBcd(byte val) {
+return ( (val / 10 * 16) + (val % 10) );
+}
+
+byte bcdToDec(byte val) {
+return ( (val / 16 * 10) + (val % 16) );
+}
+
+void setDateDs3231(byte second, // 0-59
+byte minute, // 0-59
+byte hour, // 1-23
+byte dayOfWeek, // 1-7
+byte dayOfMonth, // 1-28/29/30/31
+byte month, // 1-12
+byte year) // 0-99
+{
+Wire.beginTransmission(DS3231_I2C_ADDRESS);
+Wire.write(0);
+Wire.write(decToBcd(second));
+Wire.write(decToBcd(minute));
+Wire.write(decToBcd(hour));
+Wire.write(decToBcd(dayOfWeek));
+Wire.write(decToBcd(dayOfMonth));
+Wire.write(decToBcd(month));
+Wire.write(decToBcd(year));
+Wire.endTransmission();
+}
+
+void getDateDs3231(byte *second,
+byte *minute,
+byte *hour,
+byte *dayOfWeek,
+byte *dayOfMonth,
+byte *month,
+byte *year)
+{
+
+Wire.beginTransmission(DS3231_I2C_ADDRESS);
+Wire.write(0);
+Wire.endTransmission();
+
+Wire.requestFrom(DS3231_I2C_ADDRESS, 7);
+
+*second = bcdToDec(Wire.read() & 0x7f);
+*minute = bcdToDec(Wire.read());
+*hour = bcdToDec(Wire.read() & 0x3f);
+*dayOfWeek = bcdToDec(Wire.read());
+*dayOfMonth = bcdToDec(Wire.read());
+*month = bcdToDec(Wire.read());
+*year = bcdToDec(Wire.read());
+}
+
+
+
+//////////////////
+void setup() {
+Serial.begin(9600);
+Wire.begin();
+
+for (uint8_t i = 0; i < 4; i++) {
+pinMode(DIG[i], OUTPUT);
+digitalWrite(DIG[i], HIGH);
+}
+for (uint8_t i = 0; i < 7; i++) {
+pinMode(SEG[i], OUTPUT);
+digitalWrite(SEG[i], HIGH);
+}
+//включает выход SQW, который вроде выключен по умолчанию
+Wire.beginTransmission(DS3231_I2C_ADDRESS);
+Wire.write(0x0E);
+Wire.write(0x80);
+Wire.endTransmission();
+
+}
+
+void loop() {
+// читаем время из модуля
+byte second, minute, hour, dayOfWeek, dayOfMonth, month, year;
+getDateDs3231(&second, &minute, &hour, &dayOfWeek, &dayOfMonth, &month, &year);
+// забиваем массив значениями для отпарвки на экран
+int8_t TimeDisp[4];
+
+TimeDisp[0] = hour / 10;
+TimeDisp[1] = hour % 10;
+TimeDisp[2] = minute / 10;
+TimeDisp[3] = minute % 10;
+
+for (byte i = 0; i < 4; i++) {
+showNumber(TimeDisp[i]); // отправляем байт с "числом"
+showDigit(i); // включаем разряд
+delay(5); // ждем немного перед отправкой следующего "числа"
+}
+
+
+}
+
+void shiftOut(uint8_t dataPin, uint8_t clockPin, uint8_t bitOrder, uint8_t val) 
+{ 
+uint8_t i; 
+
+for (i = 0; i < 8; i++) { 
+if (bitOrder == LSBFIRST) 
+digitalWrite(dataPin, val & (1 « i)); 
+else 
+digitalWrite(dataPin, val & (1 « (7 - i))); 
+
+digitalWrite(clockPin, HIGH); 
+digitalWrite(clockPin, LOW); 
+} 
+}

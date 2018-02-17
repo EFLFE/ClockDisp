@@ -4,7 +4,7 @@ using System.IO.Ports;
 using System.Threading;
 using System.Windows;
 
-namespace ClockDisp
+namespace ClockDisp.Register
 {
     internal static class Compot
     {

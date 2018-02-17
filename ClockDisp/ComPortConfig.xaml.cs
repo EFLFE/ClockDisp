@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Windows;
+using ClockDisp.Register;
 
 namespace ClockDisp
 {

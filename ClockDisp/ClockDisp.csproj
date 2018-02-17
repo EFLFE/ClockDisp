@@ -73,7 +73,7 @@
     <Compile Include="ComPortConfig.xaml.cs">
       <DependentUpon>ComPortConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Compot.cs" />
+    <Compile Include="Register\Compot.cs" />
     <Compile Include="Exts.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -198,6 +198,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="InputDataInfo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Examples.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using ClockDisp.P543Data;
+using ClockDisp.Register;
 
 namespace ClockDisp
 {
@@ -35,7 +36,7 @@ namespace ClockDisp
             {
                 Dispatcher.Invoke(() =>
                 {
-                    // TODO
+                    // TODO compare version
                     menuGetUpdate.Header = "Get update";
 
                     MessageBoxResult rez = MessageBox.Show(
@@ -80,13 +81,13 @@ namespace ClockDisp
 
         private void P543_OnCellSignal(int arg1, int arg2, bool arg3)
         {
-            // TODO
+            // TODO P543_OnCellSignal
             throw new System.NotImplementedException();
         }
 
         private void P543_OnRoadSignal(int arg1, bool arg2)
         {
-            // TODO
+            // TODO P543_OnRoadSignal
             throw new System.NotImplementedException();
         }
 
