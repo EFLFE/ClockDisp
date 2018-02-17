@@ -4,7 +4,7 @@ using System.IO.Ports;
 using System.Threading;
 using System.Windows;
 
-namespace ClockDisp.Register
+namespace ClockDisp.P543Data
 {
     // чтение данных с порта
     internal static class Compot

@@ -6,12 +6,7 @@ namespace ClockDisp
 {
     internal static class Exts
     {
-        private const double FADE_DOWN = 1.0 / 6.0;
-
-        public static bool HaveFlag(this ColorIndexset a, ColorIndexset b)
-        {
-            return (a & b) == b;
-        }
+        private const double FADE_DOWN = 1.0 / P543.TOTAL_SEGMENT_COUNT;
 
         public static bool IsBitSet(byte value, int bitindex)
         {

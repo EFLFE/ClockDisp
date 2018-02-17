@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="P543Data\Discharge.cs" />
     <Compile Include="Updater.cs" />
     <Page Include="ComPortConfig.xaml">
       <SubType>Designer</SubType>
@@ -73,7 +74,7 @@
     <Compile Include="ComPortConfig.xaml.cs">
       <DependentUpon>ComPortConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Register\Compot.cs" />
+    <Compile Include="P543Data\Compot.cs" />
     <Compile Include="Exts.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -88,8 +89,6 @@
     <Compile Include="MessageWindow.xaml.cs">
       <DependentUpon>MessageWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="P543Data\Cell.cs" />
-    <Compile Include="P543Data\ColorIndexset.cs" />
     <Compile Include="P543Data\P543.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

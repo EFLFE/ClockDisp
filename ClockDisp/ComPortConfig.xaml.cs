@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.IO.Ports;
 using System.Windows;
-using ClockDisp.Register;
+using ClockDisp.P543Data;
 
 namespace ClockDisp
 {
