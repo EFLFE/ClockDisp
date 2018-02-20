@@ -13,7 +13,6 @@ namespace ClockDisp
         private int renderDelayTime = 100;
         private readonly UIElement[][] discharges;
 
-        // конструктор
         public MainWindow()
         {
             InitializeComponent();

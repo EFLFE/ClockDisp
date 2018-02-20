@@ -21,6 +21,8 @@ namespace ClockDisp.P543Data
         private static SerialPort port;
         private static object[] data;
 
+        public static bool PortIsOpen => port != null && port.IsOpen;
+
         public static void CreatePort(string portName, int baudrate, Parity parity, int databits,
             StopBits stopBits, Handshake handshake, int readTimeout, int writeTimeput)
         {

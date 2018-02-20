@@ -8,6 +8,9 @@ namespace ClockDisp.P543Data
         public const int TOTAL_SEGMENT_COUNT = 8;
         public const int TOTAL_DISCHARGE_COUNT = 6;
 
+        private static int timer;
+        private static Random rnd = new Random();
+
         // TODO: маска чисел
 
         private static readonly bool[] roadPower = new bool[ROAD_COUNT];
@@ -50,22 +53,49 @@ namespace ClockDisp.P543Data
             // тут будет симуляция динамической индексации:
             // сбрасываем данные разрядов после отрисовки
 
-            byte[] disArray = new byte[TOTAL_DISCHARGE_COUNT]
+            if (Compot.PortIsOpen)
             {
-                discharge0,
-                discharge1,
-                discharge2,
-                discharge3,
-                discharge4,
-                discharge5,
-            };
-            discharge0 = 0;
-            discharge1 = 0;
-            discharge2 = 0;
-            discharge3 = 0;
-            discharge4 = 0;
-            discharge5 = 0;
-            return disArray;
+                byte[] disArray = new byte[TOTAL_DISCHARGE_COUNT]
+                {
+                    discharge0,
+                    discharge1,
+                    discharge2,
+                    discharge3,
+                    discharge4,
+                    discharge5,
+                };
+                discharge0 = 0;
+                discharge1 = 0;
+                discharge2 = 0;
+                discharge3 = 0;
+                discharge4 = 0;
+                discharge5 = 0;
+                return disArray;
+            }
+            else
+            {
+                // demo (visual testing)
+                timer++;
+                if (timer == 10)
+                {
+                    timer = 0;
+                    var by = new byte[TOTAL_DISCHARGE_COUNT];
+                    rnd.NextBytes(by);
+                    return by;
+                }
+                else
+                {
+                    return new byte[TOTAL_DISCHARGE_COUNT]
+                    {
+                        0b0_0000000,
+                        0b0_0000000,
+                        0b0_0000000,
+                        0b0_0000000,
+                        0b0_0000000,
+                        0b0_0000000,
+                    };
+                }
+            }
         }
 
     }
