@@ -6,48 +6,6 @@ using System.Windows;
 
 namespace ClockDisp.P543Data
 {
-    internal struct StaticQueue
-    {
-        public readonly byte[] Data;
-        public readonly int Capacity;
-
-        private bool newLineCheck;
-
-        public StaticQueue(int capacity)
-        {
-            Data = new byte[capacity];
-            Capacity = capacity;
-            newLineCheck = false;
-        }
-
-        public bool Pulse(byte value)
-        {
-            for (int i = 0; i < Capacity - 1; i++)
-            {
-                Data[i] = Data[i + 1];
-            }
-            Data[Capacity - 1] = value;
-
-            // 13 10
-            if (value == 13)
-            {
-                newLineCheck = true;
-            }
-            else if (newLineCheck && value == 10)
-            {
-                // TRIGGERET!
-                newLineCheck = false;
-                return true;
-            }
-            else
-            {
-                newLineCheck = false;
-            }
-            return false;
-        }
-
-    }
-
     // чтение данных с порта
     internal static class Compot
     {
@@ -66,6 +24,19 @@ namespace ClockDisp.P543Data
         private static object[] data;
 
         public static bool PortIsOpen => port != null && port.IsOpen;
+
+        public static void ShowBuffer()
+        {
+            var data = staticQueue.Data;
+
+            new MessageWindow(
+                "Buffer data",
+                $"{data[0]}\n" +
+                $"{data[1]}\n" +
+                $"{data[2]}\n" +
+                $"{data[3]}\n")
+                .ShowDialog();
+        }
 
         public static void CreatePort(string portName, int baudrate, Parity parity, int databits,
             StopBits stopBits, Handshake handshake, int readTimeout, int writeTimeput)

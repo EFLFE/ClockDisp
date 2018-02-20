@@ -17,7 +17,7 @@ namespace ClockDisp
         {
             InitializeComponent();
 
-            if (lastLeft != 0.0)
+            if (lastLeft != double.NaN)
             {
                 window.Left = lastLeft;
                 window.Top = lastTop;

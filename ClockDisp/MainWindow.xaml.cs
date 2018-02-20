@@ -25,7 +25,8 @@ namespace ClockDisp
             ThreadPool.QueueUserWorkItem(ReadingQueueDataPool);
 
             menuRenderTime0.Click += (_, __) => renderDelayTime = -1;
-            // 1, 5
+            menuRenderTime001.Click += (_, __) => SetRenderDelay(1); // (!!)
+            menuRenderTime01.Click += (_, __) => SetRenderDelay(5);  // (!)
             menuRenderTime1.Click += (_, __) => SetRenderDelay(10);
             menuRenderTime2.Click += (_, __) => SetRenderDelay(25);
             menuRenderTime3.Click += (_, __) => SetRenderDelay(50);
@@ -64,7 +65,7 @@ namespace ClockDisp
             discharges = new UIElement[P543.TOTAL_DISCHARGE_COUNT][];
             discharges[0] = new UIElement[] { a1, b1, c1, d1, e1, f1, g1, timer };
             discharges[1] = new UIElement[] { a2, b2, c2, d2, e2, f2, g2, program };
-            discharges[2] = new UIElement[] { dotdot };
+            discharges[2] = new UIElement[] { null, null, null, null, null, null, null, dotdot };
             discharges[3] = new UIElement[] { a3, b3, c3, d3, e3, f3, g3, bell };
             discharges[4] = new UIElement[] { a4, b4, c4, d4, e4, f4, g4 };
             discharges[5] = new UIElement[] { monday, tuesday, wednesday, thursday, friday, saturday, sunday, week_day };
@@ -95,11 +96,12 @@ namespace ClockDisp
             // каждый разряд
             for (int i = 0; i < P543.TOTAL_DISCHARGE_COUNT; i++)
             {
-                int disCount = discharges[i].Length;
-
                 // каждый сегмент
-                for (int j = disCount - 1; j >= 0; j--)
+                for (int j = discharges[i].Length - 1; j >= 0; j--)
                 {
+                    if (discharges[i][j] == null)
+                        continue;
+
                     if (P543.IsBitSet(disData[i], j))
                         discharges[i][j].Show();
                     else
@@ -114,7 +116,8 @@ namespace ClockDisp
             {
                 for (int j = 0; j < discharges[i].Length; j++)
                 {
-                    discharges[i][j].Hide();
+                    if (discharges[i][j] != null)
+                        discharges[i][j].Hide();
                 }
             }
         }
@@ -153,6 +156,11 @@ namespace ClockDisp
                 return;
             }
             System.Diagnostics.Process.Start(Updater.LastData.AsserDownloadUrl);
+        }
+
+        private void OnShowBuffer(object sender, RoutedEventArgs e)
+        {
+            Compot.ShowBuffer();
         }
     }
 }

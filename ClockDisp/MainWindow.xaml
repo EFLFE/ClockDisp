@@ -73,8 +73,8 @@
             <MenuItem Header="Behavior">
                 <MenuItem x:Name="renderDelayMenu" Header="Render delay (100)">
                     <MenuItem x:Name="menuRenderTime0" Header="Pause"/>
-                    <MenuItem x:Name="menuRenderTime001" Header="1 ms" IsEnabled="False"/>
-                    <MenuItem x:Name="menuRenderTime01" Header="5 ms" IsEnabled="False"/>
+                    <MenuItem x:Name="menuRenderTime001" Header="1 ms (!!)"/>
+                    <MenuItem x:Name="menuRenderTime01" Header="5 ms (!)"/>
                     <MenuItem x:Name="menuRenderTime1" Header="10 ms"/>
                     <MenuItem x:Name="menuRenderTime2" Header="25 ms"/>
                     <MenuItem x:Name="menuRenderTime3" Header="50 ms"/>
@@ -87,6 +87,7 @@
                 <MenuItem Header="Settings" Click="OnOpenCOMSettings"/>
                 <MenuItem x:Name="menuComOpen" Header="Open" Click="OnOpenPort" IsEnabled="False"/>
                 <MenuItem x:Name="menuComClose" Header="Close" Click="OnClosePort" IsEnabled="False"/>
+                <MenuItem Header="Show buffer" Click="OnShowBuffer"/>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem x:Name="menuGetUpdate" Header="Check update" Click="OnDownloadNewVersion"/>
