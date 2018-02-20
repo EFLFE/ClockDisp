@@ -5,7 +5,7 @@ namespace ClockDisp
 {
     public partial class App : Application
     {
-        public const string VERSION = "1.1.5";
+        public const string VERSION = "1.1.6";
 
         public App()
         {
