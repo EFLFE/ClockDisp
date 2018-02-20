@@ -87,11 +87,21 @@ namespace ClockDisp.P543Data
                         ClosePort();
                         Application.Current.Dispatcher.Invoke(() => new MessageWindow(
                             "Error",
-                            $"Compot: буффер переполнен. Программа не успевает их обработать.").ShowDialog());
+                            $"Compot: буффер переполнен. Программа не успевает их обработать. Порт закрыт.").ShowDialog());
                     }
                     while (port.BytesToRead > 3)
                     {
                         port.Read(buffer, 0, buffer.Length);
+
+                        // ckeck new line
+                        if (buffer[2] != '\r' || buffer[3] != '\n')
+                        {
+                            ClosePort();
+                            Application.Current.Dispatcher.Invoke(() => new MessageWindow(
+                                "Error",
+                                $"Compot: неверный формат данных. Порт закрыт.").ShowDialog());
+                        }
+
                         P543.ParseSignal(buffer[0], buffer[1]);
                     }
                 }
