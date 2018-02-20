@@ -17,6 +17,11 @@ namespace ClockDisp
         {
             InitializeComponent();
 
+            Title = "П-543 эмулятор  v" + App.VERSION;
+#if DEBUG
+            Title += " DEBUG";
+#endif
+
             ThreadPool.QueueUserWorkItem(ReadingQueueDataPool);
 
             menuRenderTime0.Click += (_, __) => renderDelayTime = -1;

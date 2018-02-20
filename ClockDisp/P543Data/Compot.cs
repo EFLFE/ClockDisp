@@ -96,11 +96,12 @@ namespace ClockDisp.P543Data
                         // ckeck new line
                         if (buffer[2] != '\r' || buffer[3] != '\n')
                         {
-                            ClosePort();
-                            Application.Current.Dispatcher.Invoke(() => new MessageWindow(
-                                "Error",
-                                $"Compot: неверный формат данных. Порт закрыт.").ShowDialog());
-                            break;
+                            continue;
+                            //ClosePort();
+                            //Application.Current.Dispatcher.Invoke(() => new MessageWindow(
+                            //    "Error",
+                            //    $"Compot: неверный формат данных. Порт закрыт.").ShowDialog());
+                            //break;
                         }
 
                         P543.ParseSignal(buffer[0], buffer[1]);
