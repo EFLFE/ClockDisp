@@ -3,11 +3,10 @@ using ClockDisp.P543Data;
 
 namespace ClockDisp
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        public const string VERSION = "1.0.1";
+
         public App()
         {
             Dispatcher.UnhandledException += Dispatcher_UnhandledException;

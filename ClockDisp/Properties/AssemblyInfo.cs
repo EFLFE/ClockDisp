@@ -3,6 +3,7 @@ using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
+using ClockDisp;
 
 [assembly: AssemblyTitle("ClockDisp")]
 [assembly: AssemblyDescription("")]
@@ -20,5 +21,5 @@ using System.Windows;
 
 [assembly: ThemeInfo(ResourceDictionaryLocation.None, ResourceDictionaryLocation.SourceAssembly)]
 
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+[assembly: AssemblyVersion(App.VERSION + ".*")]
+[assembly: AssemblyFileVersion(App.VERSION + ".0")]

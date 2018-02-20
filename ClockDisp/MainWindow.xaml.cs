@@ -41,14 +41,13 @@ namespace ClockDisp
             {
                 Dispatcher.Invoke(() =>
                 {
-                    // TODO compare version
                     menuGetUpdate.Header = "Get update";
 
                     MessageBoxResult rez = MessageBox.Show(
-                        $"{data.Name} {data.Ver.ToString(3)}\r\n\r\nDownload now?",
+                        $"{data.Name} ({data.Ver.ToString(3)})\r\n\r\nDownload now?",
                         "New version detected",
                         MessageBoxButton.YesNo,
-                        MessageBoxImage.Information);
+                        MessageBoxImage.Question);
 
                     if (rez == MessageBoxResult.Yes)
                     {

@@ -46,6 +46,7 @@ namespace ClockDisp
         private static void Pool(object nil)
         {
             Thread.Sleep(2000);
+            var currentVersion = new Version(App.VERSION);
 
             while (true)
             {
@@ -58,16 +59,21 @@ namespace ClockDisp
                     if (release.Assets.Count > 0)
                     {
                         ReleaseAsset asset = release.Assets[0];
+                        var assetVersion = new Version(release.TagName);
 
-                        LastData = new UpdaterData(
-                            release.Name,
-                            release.Url,
-                            new Version(release.TagName),
-                            asset.Name,
-                            asset.BrowserDownloadUrl);
+                        // compare version
+                        if (assetVersion > currentVersion)
+                        {
+                            LastData = new UpdaterData(
+                                release.Name,
+                                release.Url,
+                                new Version(release.TagName),
+                                asset.Name,
+                                asset.BrowserDownloadUrl);
 
-                        OnDetectedNewVersion(LastData);
-                        return;
+                            OnDetectedNewVersion(LastData);
+                            return;
+                        }
                     }
                 }
                 catch { }
