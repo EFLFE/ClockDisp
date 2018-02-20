@@ -10,15 +10,23 @@ namespace ClockDisp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private P543 p543;
+        private int renderDelayTime = 100;
+        private readonly UIElement[][] discharges;
 
         // конструктор
         public MainWindow()
         {
             InitializeComponent();
-            p543 = new P543();
 
             ThreadPool.QueueUserWorkItem(ReadingQueueDataPool);
+
+            menuRenderTime0.Click += (_, __) => renderDelayTime = -1;
+            menuRenderTime1.Click += (_, __) => renderDelayTime = 10; // рискованно
+            menuRenderTime2.Click += (_, __) => renderDelayTime = 25; // рискованно
+            menuRenderTime3.Click += (_, __) => renderDelayTime = 50; // ещё терпимо
+            menuRenderTime4.Click += (_, __) => renderDelayTime = 100;
+            menuRenderTime5.Click += (_, __) => renderDelayTime = 250;
+            menuRenderTime6.Click += (_, __) => renderDelayTime = 500;
 
             Compot.OnPortCreated += () =>
             {
@@ -49,151 +57,62 @@ namespace ClockDisp
                 });
             };
 
-            // отключить все кнопки
-            week_day.Hide();
-            monday.Hide();
-            tuesday.Hide();
-            wendesday.Hide();
-            thursday.Hide();
-            friday.Hide();
-            saturday.Hide();
-            sunday.Hide();
-            bell.Hide();
-            program.Hide();
-            timer.Hide();
+            discharges = new UIElement[P543.TOTAL_DISCHARGE_COUNT][];
+            discharges[0] = new UIElement[] { a1, b1, c1, d1, e1, f1, g1, timer };
+            discharges[1] = new UIElement[] { a2, b2, c2, d2, e2, f2, g2, program };
+            discharges[2] = new UIElement[] { dotdot };
+            discharges[3] = new UIElement[] { a3, b3, c3, d3, e3, f3, g3, bell };
+            discharges[4] = new UIElement[] { a4, b4, c4, d4, e4, f4, g4 };
+            discharges[5] = new UIElement[] { monday, tuesday, wednesday, thursday, friday, saturday, sunday, week_day };
 
-            //digits[0] = new UIElement[7] { a1, b1, c1, d1, e1, f1, g1 };
-            //digits[1] = new UIElement[7] { a2, b2, c2, d2, e2, f2, g2 };
-            //digits[3] = new UIElement[7] { a3, b3, c3, d3, e3, f3, g3 };
-            //digits[4] = new UIElement[7] { a4, b4, c4, d4, e4, f4, g4 };
+            // отключить все кнопки
+            HideAll();
         }
 
-        private void ReadingQueueDataPool(object _)
+        private void ReadingQueueDataPool(object __)
         {
-            const int delay = 100;
-
             while (true)
             {
-                Thread.Sleep(delay);
-                /*
-                buffer[0] = Exts.DigitToBit(d1);
-                buffer[1] = Exts.DigitToBit(d2);
-                buffer[2] = Exts.DigitToBit(d3);
-                buffer[3] = Exts.DigitToBit(d4);
-
-                Thread.Sleep(delay);
-                Dispatcher.Invoke(() => SimulatePrintTime(0));
-
-                Thread.Sleep(delay);
-                Dispatcher.Invoke(() => SimulatePrintTime(1));
-
-                Thread.Sleep(delay);
-                Dispatcher.Invoke(() => SimulatePrintTime(2));
-
-                Thread.Sleep(delay);
-                Dispatcher.Invoke(() => SimulatePrintTime(3));
-
-                while (Compot.OutBuffer.Count > 0)
+                while (renderDelayTime == -1)
                 {
-                    string outData = Compot.OutBuffer.Dequeue();
+                    Thread.Sleep(1);
                 }
-                */
+                byte[] disData = P543.GetAndReset();
+                Dispatcher.Invoke(() =>
+                {
+                    Print(disData);
+                });
+                Thread.Sleep(renderDelayTime);
             }
         }
 
-        private void SimulatePrintTime(int discharge)
+        private void Print(byte[] disData)
         {
-            /*
             // каждый разряд
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < P543.TOTAL_DISCHARGE_COUNT; i++)
             {
+                int disCount = discharges[i].Length;
+
                 // каждый сегмент
-                for (int j = 0; j < 7; j++)
+                for (int j = disCount - 1; j >= 0; j--)
                 {
-                    if (i == discharge)
-                    {
-                        // каждый бит числа
-                        for (int z = 0; z < 7; z++)
-                        {
-                            if (Exts.IsBitSet(buffer[i], z))
-                                digits[i][6 - z].Show();
-                            else
-                                digits[i][6 - z].Hide();
-                        }
-                    }
+                    if (P543.IsBitSet(disData[i], j))
+                        discharges[i][j].Show();
                     else
-                    {
-                        digits[i][j].HideSmooth();
-                    }
+                        discharges[i][j].HideSmooth();
                 }
             }
-            */
         }
 
-        // [БУД]
-        private void OnWeekDayClick(object sender, MouseButtonEventArgs e)
+        private void HideAll()
         {
-            week_day.ToggleOpacity();
-        }
-
-        // [ПН]
-        private void OnMondayClick(object sender, MouseButtonEventArgs e)
-        {
-            monday.ToggleOpacity();
-        }
-
-        // [ВТ]
-        private void OnTuesdayClick(object sender, MouseButtonEventArgs e)
-        {
-            tuesday.ToggleOpacity();
-        }
-
-        // [СР]
-        private void OnWendesdayClick(object sender, MouseButtonEventArgs e)
-        {
-            wendesday.ToggleOpacity();
-        }
-
-        // [ЧТ]
-        private void OnThursdayClick(object sender, MouseButtonEventArgs e)
-        {
-            thursday.ToggleOpacity();
-        }
-
-        // [ПТ]
-        private void OnFridayClick(object sender, MouseButtonEventArgs e)
-        {
-            friday.ToggleOpacity();
-        }
-
-        // [СБ]
-        private void OnSaturdayClick(object sender, MouseButtonEventArgs e)
-        {
-            saturday.ToggleOpacity();
-        }
-
-        // [ВС]
-        private void OnSundayClick(object sender, MouseButtonEventArgs e)
-        {
-            sunday.ToggleOpacity();
-        }
-
-        // [колокольчик]
-        private void OnBellClick(object sender, MouseButtonEventArgs e)
-        {
-            bell.ToggleOpacity();
-        }
-
-        // [ПРГ]
-        private void OnProgramClick(object sender, MouseButtonEventArgs e)
-        {
-            program.ToggleOpacity();
-        }
-
-        // [таймер]
-        private void OnTimerClick(object sender, MouseButtonEventArgs e)
-        {
-            timer.ToggleOpacity();
+            for (int i = 0; i < P543.TOTAL_DISCHARGE_COUNT; i++)
+            {
+                for (int j = 0; j < discharges[i].Length; j++)
+                {
+                    discharges[i][j].Hide();
+                }
+            }
         }
 
         private void OnExitClick(object sender, RoutedEventArgs e)

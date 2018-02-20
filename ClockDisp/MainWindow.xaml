@@ -20,10 +20,10 @@
         <Image x:Name="dotdot" HorizontalAlignment="Left" Height="90" Margin="541,147,0,0" VerticalAlignment="Top" Width="48" Source="Resources/digit/spl.png" OpacityMask="Black"/>
         <Grid HorizontalAlignment="Left" Height="171" Margin="277,107,0,0" VerticalAlignment="Top" Width="113">
             <Image x:Name="a4" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
-            <Image x:Name="b4" HorizontalAlignment="Left" Height="81" Margin="9,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
+            <Image x:Name="b4" HorizontalAlignment="Left" Height="81" Margin="8,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
             <Image x:Name="c4" HorizontalAlignment="Left" Height="79" Margin="77,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
             <Image x:Name="d4" HorizontalAlignment="Left" Height="23" Margin="20,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
-            <Image x:Name="e4" HorizontalAlignment="Left" Height="79" Margin="1,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
+            <Image x:Name="e4" HorizontalAlignment="Left" Height="79" Margin="0,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
             <Image x:Name="f4" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
             <Image x:Name="g4" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
         </Grid>
@@ -54,21 +54,34 @@
             <Image x:Name="f1" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
             <Image x:Name="g1" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
         </Grid>
-        <Image x:Name="week_day" HorizontalAlignment="Left" Height="75" Margin="145,281,0,0" VerticalAlignment="Top" Width="104" Source="Resources/button/week-day.png" MouseDown="OnWeekDayClick"/>
-        <Image x:Name="bell" HorizontalAlignment="Left" Height="71" Margin="402,285,0,0" VerticalAlignment="Top" Width="67" Source="Resources/button/bell.png" MouseDown="OnBellClick"/>
-        <Image x:Name="friday" HorizontalAlignment="Left" Height="39" Margin="159,193,0,0" VerticalAlignment="Top" Width="53" Source="Resources/button/friday.png" MouseDown="OnFridayClick"/>
-        <Image x:Name="monday" HorizontalAlignment="Left" Height="38" Margin="169,108,0,0" VerticalAlignment="Top" Width="60" Source="Resources/button/monday.png" MouseDown="OnMondayClick"/>
-        <Image x:Name="program" HorizontalAlignment="Left" Height="75" Margin="604,282,0,0" VerticalAlignment="Top" Width="108" Source="Resources/button/program.png" MouseDown="OnProgramClick"/>
-        <Image x:Name="timer" HorizontalAlignment="Left" Height="73" Margin="741,283,0,0" VerticalAlignment="Top" Width="76" Source="Resources/button/timer.png" MouseDown="OnTimerClick"/>
-        <Image x:Name="saturday" HorizontalAlignment="Left" Height="41" Margin="207,193,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/saturday.png" MouseDown="OnSaturdayClick"/>
-        <Image x:Name="sunday" HorizontalAlignment="Left" Height="40" Margin="177,236,0,0" VerticalAlignment="Top" Width="54" Source="Resources/button/sunday.png" MouseDown="OnSundayClick"/>
-        <Image x:Name="thursday" HorizontalAlignment="Left" Height="41" Margin="212,150,0,0" VerticalAlignment="Top" Width="52" Source="Resources/button/thursday.png" MouseDown="OnThursdayClick"/>
-        <Image x:Name="tuesday" HorizontalAlignment="Left" Height="41" Margin="212,107,0,0" VerticalAlignment="Top" Width="58" Source="Resources/button/tuesday.png" MouseDown="OnTuesdayClick"/>
-        <Image x:Name="wendesday" HorizontalAlignment="Left" Height="41" Margin="166,150,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/wendesday.png" MouseDown="OnWendesdayClick"/>
+        <Image x:Name="week_day" HorizontalAlignment="Left" Height="75" Margin="145,281,0,0" VerticalAlignment="Top" Width="104" Source="Resources/button/week-day.png"/>
+        <Image x:Name="bell" HorizontalAlignment="Left" Height="71" Margin="402,285,0,0" VerticalAlignment="Top" Width="67" Source="Resources/button/bell.png"/>
+        <Image x:Name="friday" HorizontalAlignment="Left" Height="39" Margin="159,193,0,0" VerticalAlignment="Top" Width="53" Source="Resources/button/friday.png"/>
+        <Image x:Name="monday" HorizontalAlignment="Left" Height="38" Margin="169,108,0,0" VerticalAlignment="Top" Width="60" Source="Resources/button/monday.png"/>
+        <Image x:Name="program" HorizontalAlignment="Left" Height="75" Margin="604,282,0,0" VerticalAlignment="Top" Width="108" Source="Resources/button/program.png"/>
+        <Image x:Name="timer" HorizontalAlignment="Left" Height="73" Margin="741,283,0,0" VerticalAlignment="Top" Width="76" Source="Resources/button/timer.png"/>
+        <Image x:Name="saturday" HorizontalAlignment="Left" Height="41" Margin="207,193,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/saturday.png"/>
+        <Image x:Name="sunday" HorizontalAlignment="Left" Height="40" Margin="177,236,0,0" VerticalAlignment="Top" Width="54" Source="Resources/button/sunday.png"/>
+        <Image x:Name="thursday" HorizontalAlignment="Left" Height="41" Margin="212,150,0,0" VerticalAlignment="Top" Width="52" Source="Resources/button/thursday.png"/>
+        <Image x:Name="tuesday" HorizontalAlignment="Left" Height="41" Margin="212,107,0,0" VerticalAlignment="Top" Width="58" Source="Resources/button/tuesday.png"/>
+        <Image x:Name="wednesday" HorizontalAlignment="Left" Height="41" Margin="166,150,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/wendesday.png"/>
 
         <Menu Height="21" VerticalAlignment="Top" Panel.ZIndex="2">
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="OnExitClick"/>
+            </MenuItem>
+            <MenuItem Header="Behavior">
+                <MenuItem Header="Render delay">
+                    <MenuItem x:Name="menuRenderTime0" Header="Pause"/>
+                    <MenuItem x:Name="menuRenderTime001" Header="1 ms" IsEnabled="False"/>
+                    <MenuItem x:Name="menuRenderTime01" Header="5 ms" IsEnabled="False"/>
+                    <MenuItem x:Name="menuRenderTime1" Header="10 ms"/>
+                    <MenuItem x:Name="menuRenderTime2" Header="25 ms"/>
+                    <MenuItem x:Name="menuRenderTime3" Header="50 ms"/>
+                    <MenuItem x:Name="menuRenderTime4" Header="100 ms"/>
+                    <MenuItem x:Name="menuRenderTime5" Header="250 ms"/>
+                    <MenuItem x:Name="menuRenderTime6" Header="500 ms"/>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="COM">
                 <MenuItem Header="Settings" Click="OnOpenCOMSettings"/>

@@ -9,10 +9,12 @@ namespace ClockDisp.P543Data
     // чтение данных с порта
     internal static class Compot
     {
+        private const int BUFFER_CAPACITY = 512;
+
         public static event Action OnPortCreated;
         public static event Action<Exception> OnPortFail;
 
-        public static readonly Queue<string> OutBuffer = new Queue<string>();
+        //public static readonly Queue<byte[]> OutBuffer = new Queue<byte[]>(BUFFER_CAPACITY);
 
         public static bool ThreadActive = true;
         private static Thread thread;
@@ -28,6 +30,7 @@ namespace ClockDisp.P543Data
                 thread.Start();
             }
 
+            // пожалуй да, это реализовано по дебильному
             data = new object[]
             {
                 portName, baudrate, parity, databits, stopBits, handshake, readTimeout, writeTimeput
@@ -36,12 +39,15 @@ namespace ClockDisp.P543Data
 
         private static void ThreadMethod()
         {
+            byte[] buffer = new byte[4];
+
             while (ThreadActive)
             {
-                Thread.Sleep(250);
+                Thread.Sleep(5);
 
                 if (data != null)
                 {
+                    // create port
                     try
                     {
                         FreePort();
@@ -49,10 +55,13 @@ namespace ClockDisp.P543Data
                         {
                             Handshake = (Handshake)data[5],
                             ReadTimeout = (int)data[6],
-                            WriteTimeout = (int)data[7]
+                            WriteTimeout = (int)data[7],
+
+                            // https://www.arduino.cc/en/Serial/Println
+                            // return character (ASCII 13, or '\r') and a newline character (ASCII 10, or '\n')
+                            NewLine = "\r\n",
                         };
                         OpenPort();
-                        port.DataReceived += Port_DataReceived;
                         OnPortCreated();
                     }
                     catch (Exception ex)
@@ -65,15 +74,33 @@ namespace ClockDisp.P543Data
                         data = null;
                     }
                 }
+                if (port != null && port.IsOpen)
+                {
+                    /* read data
+                     * ждём два байта и перенос строки как разделитель (и того 4 байта)
+                    */
+
+                    if (port.BytesToRead > 1024)
+                    {
+                        ClosePort();
+                        Application.Current.Dispatcher.Invoke(() => new MessageWindow(
+                            "Error",
+                            $"Compot: буффер переполнен. Программа не успевает их обработать.").ShowDialog());
+                    }
+                    while (port.BytesToRead > 3)
+                    {
+                        port.Read(buffer, 0, buffer.Length);
+                        P543.ParseSignal(buffer[0], buffer[1]);
+                    }
+                }
             }
         }
 
-        private static void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        public static void ClearBuffer()
         {
-            string data = port.ReadExisting();
-            if (data != null && data.Length > 0)
+            if (port != null && !port.IsOpen)
             {
-                OutBuffer.Enqueue(data);
+                port.ReadExisting();
             }
         }
 

@@ -57,7 +57,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="P543Data\Discharge.cs" />
     <Compile Include="Updater.cs" />
     <Page Include="ComPortConfig.xaml">
       <SubType>Designer</SubType>

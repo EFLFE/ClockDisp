@@ -72,7 +72,7 @@ namespace ClockDisp
                 }
                 catch { }
 
-                timer = 1000 * 30;
+                timer = 1000 * 60;
                 while (timer > 0)
                 {
                     Thread.Sleep(1);
