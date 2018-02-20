@@ -17,15 +17,10 @@ namespace ClockDisp
         {
             InitializeComponent();
 
-            if (lastLeft == 0.0)
+            if (lastLeft != 0.0)
             {
-                lastLeft = Left;
-                lastTop = Top;
-            }
-            else
-            {
-                Left = lastLeft;
-                Top = lastTop;
+                window.Left = lastLeft;
+                window.Top = lastTop;
             }
 
             string[] avaports = SerialPort.GetPortNames();
@@ -74,6 +69,9 @@ namespace ClockDisp
             {
                 Compot.OnPortCreated -= Compot_OnPortCreated;
                 Compot.OnPortFail -= Compot_OnPortFail;
+
+                lastLeft = window.Left;
+                lastTop = window.Top;
             }
 
             base.OnClosing(e);
