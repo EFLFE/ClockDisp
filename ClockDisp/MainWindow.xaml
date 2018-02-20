@@ -10,7 +10,7 @@
         Height="498"
         ResizeMode="CanMinimize"
         WindowStyle="SingleBorderWindow"
-        WindowStartupLocation="CenterScreen" Background="Black" Foreground="White">
+        WindowStartupLocation="CenterScreen" Background="Black" Foreground="White" Icon="pack://siteoforigin:,,,/Resources/icon.ico">
     <Grid>
         <Image HorizontalAlignment="Left" Height="476" VerticalAlignment="Top" Width="1000" Source="pack://siteoforigin:,,,/Resources/IndicatorOff2.jpg"  d:IsLocked="True"/>
         <Image HorizontalAlignment="Left" Height="99" VerticalAlignment="Top" Width="1000" Source="Resources/top.png" d:IsLocked="True"/>
