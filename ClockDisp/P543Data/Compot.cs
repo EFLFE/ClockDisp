@@ -6,6 +6,48 @@ using System.Windows;
 
 namespace ClockDisp.P543Data
 {
+    internal struct StaticQueue
+    {
+        public readonly byte[] Data;
+        public readonly int Capacity;
+
+        private bool newLineCheck;
+
+        public StaticQueue(int capacity)
+        {
+            Data = new byte[capacity];
+            Capacity = capacity;
+            newLineCheck = false;
+        }
+
+        public bool Pulse(byte value)
+        {
+            for (int i = 0; i < Capacity - 1; i++)
+            {
+                Data[i] = Data[i + 1];
+            }
+            Data[Capacity - 1] = value;
+
+            // 13 10
+            if (value == 13)
+            {
+                newLineCheck = true;
+            }
+            else if (newLineCheck && value == 10)
+            {
+                // TRIGGERET!
+                newLineCheck = false;
+                return true;
+            }
+            else
+            {
+                newLineCheck = false;
+            }
+            return false;
+        }
+
+    }
+
     // чтение данных с порта
     internal static class Compot
     {
@@ -13,6 +55,8 @@ namespace ClockDisp.P543Data
 
         public static event Action OnPortCreated;
         public static event Action<Exception> OnPortFail;
+
+        private static StaticQueue staticQueue = new StaticQueue(4);
 
         //public static readonly Queue<byte[]> OutBuffer = new Queue<byte[]>(BUFFER_CAPACITY);
 
@@ -41,8 +85,6 @@ namespace ClockDisp.P543Data
 
         private static void ThreadMethod()
         {
-            byte[] buffer = new byte[4];
-
             while (ThreadActive)
             {
                 Thread.Sleep(5);
@@ -88,30 +130,45 @@ namespace ClockDisp.P543Data
                         Application.Current.Dispatcher.Invoke(() => new MessageWindow(
                             "Error",
                             $"Compot: буффер переполнен. Программа не успевает их обработать. Порт закрыт.").ShowDialog());
+                        continue;
                     }
-                    while (port.BytesToRead > 3)
-                    {
-                        port.Read(buffer, 0, buffer.Length);
-
-                        // ckeck new line
-                        if (buffer[2] != '\r' || buffer[3] != '\n')
-                        {
-                            ClosePort();
-                            Application.Current.Dispatcher.Invoke(() => new MessageWindow(
-                                "Error",
-                                "Compot: неверный формат данных. Порт закрыт.\n\r\n\rБуффер:\n\r" +
-                                $"{buffer[0]} ({(char)buffer[0]})\r\n" +
-                                $"{buffer[1]} ({(char)buffer[1]})\r\n" +
-                                $"{buffer[2]} ({(char)buffer[2]})\r\n" +
-                                $"{buffer[3]} ({(char)buffer[3]})\r\n"
-                                ).ShowDialog());
-                            break;
-                        }
-
-                        P543.ParseSignal(buffer[0], buffer[1]);
-                    }
+                    GetData();
                 }
             }
+        }
+
+        private static void GetData()
+        {
+            if (port.BytesToRead == 0)
+                return;
+
+            byte[] buffer = new byte[port.BytesToRead];
+
+            port.Read(buffer, 0, buffer.Length);
+
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                if (staticQueue.Pulse(buffer[i]))
+                {
+                    P543.ParseSignal(staticQueue.Data[0], staticQueue.Data[1]);
+                }
+            }
+
+            /* ckeck new line
+            if (buffer[2] != '\r' || buffer[3] != '\n')
+            {
+                ClosePort();
+                Application.Current.Dispatcher.Invoke(() => new MessageWindow(
+                    "Error",
+                    "Compot: неверный формат данных. Порт закрыт.\n\r\n\rБуффер:\n\r" +
+                    $"{buffer[0]} ({(char)buffer[0]})\n" +
+                    $"{buffer[1]} ({(char)buffer[1]})\n" +
+                    $"{buffer[2]} ({(char)buffer[2]})\n" +
+                    $"{buffer[3]} ({(char)buffer[3]})\n"
+                    ).ShowDialog());
+                break;
+            }
+            */
         }
 
         public static void ClearBuffer()
