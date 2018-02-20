@@ -100,6 +100,7 @@ namespace ClockDisp.P543Data
                             Application.Current.Dispatcher.Invoke(() => new MessageWindow(
                                 "Error",
                                 $"Compot: неверный формат данных. Порт закрыт.").ShowDialog());
+                            break;
                         }
 
                         P543.ParseSignal(buffer[0], buffer[1]);
