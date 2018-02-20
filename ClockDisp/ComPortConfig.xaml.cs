@@ -11,9 +11,22 @@ namespace ClockDisp
     /// </summary>
     public partial class ComPortConfig : Window
     {
+        private static double lastLeft, lastTop;
+
         public ComPortConfig()
         {
             InitializeComponent();
+
+            if (lastLeft == 0.0)
+            {
+                lastLeft = Left;
+                lastTop = Top;
+            }
+            else
+            {
+                Left = lastLeft;
+                Top = lastTop;
+            }
 
             string[] avaports = SerialPort.GetPortNames();
             if (avaports != null && avaports.Length > 0)

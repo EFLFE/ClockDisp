@@ -23,8 +23,33 @@ namespace ClockDisp.P543Data
 
         public static void ParseSignal(byte segmentsValue, byte dischargeIndex)
         {
-            // тут очень важна производительность, ибо метод будет принимать около 1000 вызовов в сек
+            int dischargeRealIndex = -1;
+
+            // get dischargeIndex real index
             switch (dischargeIndex)
+            {
+                case 0b00000001:
+                    dischargeRealIndex = 0;
+                    break;
+                case 0b00000010:
+                    dischargeRealIndex = 1;
+                    break;
+                case 0b00000100:
+                    dischargeRealIndex = 2;
+                    break;
+                case 0b00001000:
+                    dischargeRealIndex = 3;
+                    break;
+                case 0b00010000:
+                    dischargeRealIndex = 4;
+                    break;
+                case 0b00100000:
+                    dischargeRealIndex = 5;
+                    break;
+            }
+
+            // тут очень важна производительность, ибо метод будет принимать около 1000 вызовов в сек
+            switch (dischargeRealIndex)
             {
                 case 0:
                     discharge0 = segmentsValue;
