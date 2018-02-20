@@ -20,12 +20,13 @@ namespace ClockDisp
             ThreadPool.QueueUserWorkItem(ReadingQueueDataPool);
 
             menuRenderTime0.Click += (_, __) => renderDelayTime = -1;
-            menuRenderTime1.Click += (_, __) => renderDelayTime = 10; // рискованно
-            menuRenderTime2.Click += (_, __) => renderDelayTime = 25; // рискованно
-            menuRenderTime3.Click += (_, __) => renderDelayTime = 50; // ещё терпимо
-            menuRenderTime4.Click += (_, __) => renderDelayTime = 100;
-            menuRenderTime5.Click += (_, __) => renderDelayTime = 250;
-            menuRenderTime6.Click += (_, __) => renderDelayTime = 500;
+            // 1, 5
+            menuRenderTime1.Click += (_, __) => SetRenderDelay(10);
+            menuRenderTime2.Click += (_, __) => SetRenderDelay(25);
+            menuRenderTime3.Click += (_, __) => SetRenderDelay(50);
+            menuRenderTime4.Click += (_, __) => SetRenderDelay(100);
+            menuRenderTime5.Click += (_, __) => SetRenderDelay(250);
+            menuRenderTime6.Click += (_, __) => SetRenderDelay(500);
 
             Compot.OnPortCreated += () =>
             {
@@ -131,6 +132,12 @@ namespace ClockDisp
         private void OnClosePort(object sender, RoutedEventArgs e)
         {
             Compot.ClosePort();
+        }
+
+        private void SetRenderDelay(int value)
+        {
+            renderDelayMenu.Header = $"Render delay ({value})";
+            renderDelayTime = value;
         }
 
         private void OnDownloadNewVersion(object sender, RoutedEventArgs e)

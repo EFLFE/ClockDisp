@@ -32,7 +32,7 @@ namespace ClockDisp.P543Data
                 thread.Start();
             }
 
-            // пожалуй да, это реализовано по дебильному
+            // пожалуй да, это реализовано по тупому
             data = new object[]
             {
                 portName, baudrate, parity, databits, stopBits, handshake, readTimeout, writeTimeput
@@ -123,6 +123,7 @@ namespace ClockDisp.P543Data
             {
                 try
                 {
+                    // clear buffer?
                     port.Open();
                 }
                 catch (Exception ex)
@@ -136,6 +137,7 @@ namespace ClockDisp.P543Data
         {
             if (port != null && port.IsOpen)
             {
+                ClearBuffer();
                 port.Close();
             }
         }
