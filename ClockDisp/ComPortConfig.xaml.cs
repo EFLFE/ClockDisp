@@ -29,6 +29,10 @@ namespace ClockDisp
                 for (int i = 0; i < avaports.Length; i++)
                 {
                     portBox.Items.Add(avaports[i]);
+                    if (ConfigData.LastSelectedCOMPort == avaports[i])
+                    {
+                        portBox.Text = ConfigData.LastSelectedCOMPort;
+                    }
                 }
             }
 
@@ -88,6 +92,8 @@ namespace ClockDisp
             {
                 Compot.CreatePort(portBox.Text, 9600, (Parity)parityBox.SelectedIndex, dataBitsBox.SelectedIndex + 5,
                     (StopBits)stopBitsBox.SelectedIndex, Handshake.None, int.Parse(readTimeoutBox.Text), int.Parse(writeTimeoutBox.Text));
+
+                ConfigData.LastSelectedCOMPort = portBox.Text;
             }
             catch (Exception ex)
             {

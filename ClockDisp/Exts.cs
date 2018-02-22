@@ -10,7 +10,7 @@ namespace ClockDisp
 
         public static void ToggleOpacity(this UIElement uIElement)
         {
-            uIElement.Opacity = uIElement.Opacity >= 1.0 ? 0.0 : 1.0;
+            uIElement.Opacity = uIElement.Opacity >= 2.0 ? 0.0 : 2.0;
         }
 
         public static void Hide(this UIElement uIElement)
@@ -29,8 +29,8 @@ namespace ClockDisp
 
         public static void Show(this UIElement uIElement)
         {
-            if (uIElement.Opacity < 1.0)
-                uIElement.Opacity = 1.0;
+            if (uIElement.Opacity < 2.0)
+                uIElement.Opacity = 2.0;
         }
 
     }

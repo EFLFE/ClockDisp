@@ -5,7 +5,7 @@ namespace ClockDisp
 {
     public partial class App : Application
     {
-        public const string VERSION = "1.1.11";
+        public const string VERSION = "1.2.0";
 
         public App()
         {
@@ -20,6 +20,7 @@ namespace ClockDisp
         protected override void OnExit(ExitEventArgs e)
         {
             Compot.ThreadActive = false;
+            ConfigData.Save();
             base.OnExit(e);
         }
 

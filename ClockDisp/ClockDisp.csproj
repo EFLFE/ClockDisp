@@ -60,6 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConfigData.cs" />
     <Compile Include="P543Data\StaticQueue.cs" />
     <Compile Include="Updater.cs" />
     <Page Include="ComPortConfig.xaml">
@@ -197,12 +198,6 @@
     <Resource Include="Resources\button\wendesday.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="InputDataInfo.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Examples.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon.ico">

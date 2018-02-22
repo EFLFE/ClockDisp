@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Windows;
-using System.Windows.Input;
+using System;
 using ClockDisp.P543Data;
 
 namespace ClockDisp
@@ -22,10 +22,13 @@ namespace ClockDisp
             Title += " DEBUG";
 #endif
 
+            ConfigData.Load();
+            SetRenderDelay(ConfigData.ClockDisplayDelay);
+
             ThreadPool.QueueUserWorkItem(ReadingQueueDataPool);
 
-            menuRenderTime0.Click += (_, __) => renderDelayTime = -1;
-            menuRenderTime001.Click += (_, __) => SetRenderDelay(1); // (!!)
+            menuRenderTime0.Click += (_, __) => renderDelayTime = -1; // pause
+            menuRenderTime001.Click += (_, __) => SetRenderDelay(2); // (!!)
             menuRenderTime01.Click += (_, __) => SetRenderDelay(5);  // (!)
             menuRenderTime1.Click += (_, __) => SetRenderDelay(10);
             menuRenderTime2.Click += (_, __) => SetRenderDelay(25);
@@ -74,7 +77,7 @@ namespace ClockDisp
             HideAll();
         }
 
-        private void ReadingQueueDataPool(object __)
+        private void ReadingQueueDataPool(object _)
         {
             while (true)
             {
@@ -146,6 +149,7 @@ namespace ClockDisp
         {
             renderDelayMenu.Header = $"Render delay ({value})";
             renderDelayTime = value;
+            ConfigData.ClockDisplayDelay = value;
         }
 
         private void OnDownloadNewVersion(object sender, RoutedEventArgs e)
@@ -161,6 +165,14 @@ namespace ClockDisp
         private void OnShowBuffer(object sender, RoutedEventArgs e)
         {
             Compot.ShowBuffer();
+        }
+
+        private void OnAboutClick(object sender, RoutedEventArgs e)
+        {
+            new MessageWindow(
+                "About",
+                $"{Title}\nBy EFLFE\nGitHub: https://github.com/EFLFE/ClockDisp ")
+                .ShowDialog();
         }
     }
 }

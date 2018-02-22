@@ -91,10 +91,11 @@
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem x:Name="menuGetUpdate" Header="Check update" Click="OnDownloadNewVersion"/>
+                <MenuItem Header="About" Click="OnAboutClick"/>
             </MenuItem>
         </Menu>
 
-        <Grid HorizontalAlignment="Left" Height="90" Margin="0,380,0,0" VerticalAlignment="Top" Width="1000">
+        <!--<Grid HorizontalAlignment="Left" Height="90" Margin="0,380,0,0" VerticalAlignment="Top" Width="1000">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#00000000" Offset="0"/>
@@ -122,7 +123,7 @@
             <TextBlock x:Name="road_22" HorizontalAlignment="Left" Margin="784,24,0,0" TextWrapping="Wrap" Text="22" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
             <TextBlock x:Name="road_23" HorizontalAlignment="Left" Margin="812,24,0,0" TextWrapping="Wrap" Text="23" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
             <TextBlock x:Name="road_24" HorizontalAlignment="Left" Margin="838,24,0,0" TextWrapping="Wrap" Text="24" VerticalAlignment="Top" FontFamily="Consolas" FontSize="16" Height="38"/>
-        </Grid>
+        </Grid>-->
 
     </Grid>
 </Window>
