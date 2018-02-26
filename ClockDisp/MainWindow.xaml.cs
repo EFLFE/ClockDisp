@@ -66,15 +66,27 @@ namespace ClockDisp
             };
 
             discharges = new UIElement[P543.TOTAL_DISCHARGE_COUNT][];
-            discharges[0] = new UIElement[] { a1, b1, c1, d1, e1, f1, g1, timer };
-            discharges[1] = new UIElement[] { a2, b2, c2, d2, e2, f2, g2, program };
-            discharges[2] = new UIElement[] { null, null, null, null, null, null, null, dotdot };
-            discharges[3] = new UIElement[] { a3, b3, c3, d3, e3, f3, g3, bell };
-            discharges[4] = new UIElement[] { a4, b4, c4, d4, e4, f4, g4 };
-            discharges[5] = new UIElement[] { monday, tuesday, wednesday, thursday, friday, saturday, sunday, week_day };
+            //discharges[0] = new UIElement[] { a1, b1, c1, d1, e1, f1, g1, timer };
+            //discharges[1] = new UIElement[] { a2, b2, c2, d2, e2, f2, g2, program };
+            //discharges[2] = new UIElement[] { null, null, null, null, null, null, null, dotdot };
+            //discharges[3] = new UIElement[] { a3, b3, c3, d3, e3, f3, g3, bell };
+            //discharges[4] = new UIElement[] { a4, b4, c4, d4, e4, f4, g4 };
+            //discharges[5] = new UIElement[] { monday, tuesday, wednesday, thursday, friday, saturday, sunday, week_day };
+
+            discharges[0] = new UIElement[P543.TOTAL_SEGMENT_COUNT] { d0a, d0b, d0c, d0d, d0e, d0f, d0g, d0h };
+            discharges[1] = new UIElement[P543.TOTAL_SEGMENT_COUNT] { d1a, d1b, d1c, d1d, d1e, d1f, d1g, d1h };
+            discharges[2] = new UIElement[P543.TOTAL_SEGMENT_COUNT] { null, null, null, null, null, null, null, d2h };
+            discharges[3] = new UIElement[P543.TOTAL_SEGMENT_COUNT] { d3a, d3b, d3c, d3d, d3e, d3f, d3g, d3h };
+            discharges[4] = new UIElement[P543.TOTAL_SEGMENT_COUNT] { d4a, d4b, d4c, d4d, d4e, d4f, d4g, null };
+            discharges[5] = new UIElement[P543.TOTAL_SEGMENT_COUNT] { d5a, d5b, d5c, d5d, d5e, d5f, d5g, d5h };
 
             // отключить все кнопки
             HideAll();
+        }
+
+        private void InitDischarges()
+        {
+
         }
 
         private void ReadingQueueDataPool(object _)

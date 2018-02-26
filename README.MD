@@ -20,4 +20,4 @@
 
 ### Схема 
 
-![img](ClockDisp/Resources/P543_new.png)
+![img](ClockDisp/Resources/P543_v3.png)

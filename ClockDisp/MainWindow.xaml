@@ -17,54 +17,54 @@
         <Image HorizontalAlignment="Left" Height="377" Margin="0,99,0,0" VerticalAlignment="Top" Width="138" Source="Resources/left.png" d:IsLocked="True"/>
         <Image HorizontalAlignment="Left" Height="260" Margin="856,99,0,0" VerticalAlignment="Top" Width="144" Source="Resources/right.png" d:IsLocked="True"/>
         <Image HorizontalAlignment="Left" Height="117" Margin="138,359,0,0" VerticalAlignment="Top" Width="862" Source="Resources/bottom.png" d:IsLocked="True"/>
-        <Image x:Name="dotdot" HorizontalAlignment="Left" Height="90" Margin="541,147,0,0" VerticalAlignment="Top" Width="48" Source="Resources/digit/spl.png" OpacityMask="Black"/>
+        <Image x:Name="d2h" HorizontalAlignment="Left" Height="90" Margin="541,147,0,0" VerticalAlignment="Top" Width="48" Source="Resources/digit/spl.png" OpacityMask="Black"/>
         <Grid HorizontalAlignment="Left" Height="171" Margin="277,107,0,0" VerticalAlignment="Top" Width="113">
-            <Image x:Name="a4" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
-            <Image x:Name="b4" HorizontalAlignment="Left" Height="81" Margin="8,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
-            <Image x:Name="c4" HorizontalAlignment="Left" Height="79" Margin="77,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
-            <Image x:Name="d4" HorizontalAlignment="Left" Height="23" Margin="20,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
-            <Image x:Name="e4" HorizontalAlignment="Left" Height="79" Margin="0,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
-            <Image x:Name="f4" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
-            <Image x:Name="g4" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
+            <Image x:Name="d4a" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
+            <Image x:Name="d4b" HorizontalAlignment="Left" Height="81" Margin="8,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
+            <Image x:Name="d4c" HorizontalAlignment="Left" Height="79" Margin="77,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
+            <Image x:Name="d4d" HorizontalAlignment="Left" Height="23" Margin="20,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
+            <Image x:Name="d4f" HorizontalAlignment="Left" Height="79" Margin="0,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
+            <Image x:Name="d4g" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
+            <Image x:Name="d4e" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="171" Margin="399,107,0,0" VerticalAlignment="Top" Width="113">
-            <Image x:Name="a3" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
-            <Image x:Name="b3" HorizontalAlignment="Left" Height="81" Margin="10,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
-            <Image x:Name="c3" HorizontalAlignment="Left" Height="79" Margin="78,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
-            <Image x:Name="d3" HorizontalAlignment="Left" Height="23" Margin="21,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
-            <Image x:Name="e3" HorizontalAlignment="Left" Height="79" Margin="1,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
-            <Image x:Name="f3" HorizontalAlignment="Left" Height="78" Margin="70,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
-            <Image x:Name="g3" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
+            <Image x:Name="d3a" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
+            <Image x:Name="d3b" HorizontalAlignment="Left" Height="81" Margin="10,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
+            <Image x:Name="d3c" HorizontalAlignment="Left" Height="79" Margin="78,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
+            <Image x:Name="d3d" HorizontalAlignment="Left" Height="23" Margin="21,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
+            <Image x:Name="d3f" HorizontalAlignment="Left" Height="79" Margin="1,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
+            <Image x:Name="d3g" HorizontalAlignment="Left" Height="78" Margin="70,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
+            <Image x:Name="d3e" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="171" Margin="617,108,0,0" VerticalAlignment="Top" Width="113">
-            <Image x:Name="a2" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
-            <Image x:Name="b2" HorizontalAlignment="Left" Height="81" Margin="10,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
-            <Image x:Name="c2" HorizontalAlignment="Left" Height="79" Margin="77,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
-            <Image x:Name="d2" HorizontalAlignment="Left" Height="23" Margin="20,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
-            <Image x:Name="e2" HorizontalAlignment="Left" Height="79" Margin="2,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
-            <Image x:Name="f2" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
-            <Image x:Name="g2" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
+            <Image x:Name="d1a" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
+            <Image x:Name="d1b" HorizontalAlignment="Left" Height="81" Margin="10,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
+            <Image x:Name="d1c" HorizontalAlignment="Left" Height="79" Margin="77,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
+            <Image x:Name="d1d" HorizontalAlignment="Left" Height="23" Margin="20,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
+            <Image x:Name="d1f" HorizontalAlignment="Left" Height="79" Margin="2,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
+            <Image x:Name="d1g" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
+            <Image x:Name="d1e" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="171" Margin="739,107,0,0" VerticalAlignment="Top" Width="113">
-            <Image x:Name="a1" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
-            <Image x:Name="b1" HorizontalAlignment="Left" Height="81" Margin="10,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
-            <Image x:Name="c1" HorizontalAlignment="Left" Height="79" Margin="77,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
-            <Image x:Name="d1" HorizontalAlignment="Left" Height="23" Margin="20,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
-            <Image x:Name="e1" HorizontalAlignment="Left" Height="79" Margin="2,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
-            <Image x:Name="f1" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
-            <Image x:Name="g1" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
+            <Image x:Name="d0a" HorizontalAlignment="Left" Height="24" Margin="26,1,0,0" VerticalAlignment="Top" Width="76" Source="Resources/digit/d-0-0.png"/>
+            <Image x:Name="d0b" HorizontalAlignment="Left" Height="81" Margin="10,5,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-1.png"/>
+            <Image x:Name="d0c" HorizontalAlignment="Left" Height="79" Margin="77,8,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-2.png"/>
+            <Image x:Name="d0d" HorizontalAlignment="Left" Height="23" Margin="20,73,0,0" VerticalAlignment="Top" Width="67" Source="Resources/digit/d-0-3.png"/>
+            <Image x:Name="d0f" HorizontalAlignment="Left" Height="79" Margin="2,83,0,0" VerticalAlignment="Top" Width="31" Source="Resources/digit/d-0-4.png"/>
+            <Image x:Name="d0g" HorizontalAlignment="Left" Height="78" Margin="69,85,0,0" VerticalAlignment="Top" Width="30" Source="Resources/digit/d-0-5.png"/>
+            <Image x:Name="d0e" HorizontalAlignment="Left" Height="24" Margin="6,144,0,0" VerticalAlignment="Top" Width="79" Source="Resources/digit/d-0-6.png"/>
         </Grid>
-        <Image x:Name="week_day" HorizontalAlignment="Left" Height="75" Margin="145,281,0,0" VerticalAlignment="Top" Width="104" Source="Resources/button/week-day.png"/>
-        <Image x:Name="bell" HorizontalAlignment="Left" Height="71" Margin="402,285,0,0" VerticalAlignment="Top" Width="67" Source="Resources/button/bell.png"/>
-        <Image x:Name="friday" HorizontalAlignment="Left" Height="39" Margin="159,193,0,0" VerticalAlignment="Top" Width="53" Source="Resources/button/friday.png"/>
-        <Image x:Name="monday" HorizontalAlignment="Left" Height="38" Margin="169,108,0,0" VerticalAlignment="Top" Width="60" Source="Resources/button/monday.png"/>
-        <Image x:Name="program" HorizontalAlignment="Left" Height="75" Margin="604,282,0,0" VerticalAlignment="Top" Width="108" Source="Resources/button/program.png"/>
-        <Image x:Name="timer" HorizontalAlignment="Left" Height="73" Margin="741,283,0,0" VerticalAlignment="Top" Width="76" Source="Resources/button/timer.png"/>
-        <Image x:Name="saturday" HorizontalAlignment="Left" Height="41" Margin="207,193,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/saturday.png"/>
-        <Image x:Name="sunday" HorizontalAlignment="Left" Height="40" Margin="177,236,0,0" VerticalAlignment="Top" Width="54" Source="Resources/button/sunday.png"/>
-        <Image x:Name="thursday" HorizontalAlignment="Left" Height="41" Margin="212,150,0,0" VerticalAlignment="Top" Width="52" Source="Resources/button/thursday.png"/>
-        <Image x:Name="tuesday" HorizontalAlignment="Left" Height="41" Margin="212,107,0,0" VerticalAlignment="Top" Width="58" Source="Resources/button/tuesday.png"/>
-        <Image x:Name="wednesday" HorizontalAlignment="Left" Height="41" Margin="166,150,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/wendesday.png"/>
+        <Image x:Name="d5f" HorizontalAlignment="Left" Height="75" Margin="145,281,0,0" VerticalAlignment="Top" Width="104" Source="Resources/button/week-day.png"/>
+        <Image x:Name="d3h" HorizontalAlignment="Left" Height="71" Margin="402,285,0,0" VerticalAlignment="Top" Width="67" Source="Resources/button/bell.png"/>
+        <Image x:Name="d5g" HorizontalAlignment="Left" Height="39" Margin="159,193,0,0" VerticalAlignment="Top" Width="53" Source="Resources/button/friday.png"/>
+        <Image x:Name="d5a" HorizontalAlignment="Left" Height="38" Margin="169,108,0,0" VerticalAlignment="Top" Width="60" Source="Resources/button/monday.png"/>
+        <Image x:Name="d1h" HorizontalAlignment="Left" Height="75" Margin="604,282,0,0" VerticalAlignment="Top" Width="108" Source="Resources/button/program.png"/>
+        <Image x:Name="d0h" HorizontalAlignment="Left" Height="73" Margin="741,283,0,0" VerticalAlignment="Top" Width="76" Source="Resources/button/timer.png"/>
+        <Image x:Name="d5d" HorizontalAlignment="Left" Height="41" Margin="207,193,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/saturday.png"/>
+        <Image x:Name="d5e" HorizontalAlignment="Left" Height="40" Margin="177,236,0,0" VerticalAlignment="Top" Width="54" Source="Resources/button/sunday.png"/>
+        <Image x:Name="d5c" HorizontalAlignment="Left" Height="41" Margin="212,150,0,0" VerticalAlignment="Top" Width="52" Source="Resources/button/thursday.png"/>
+        <Image x:Name="d5h" HorizontalAlignment="Left" Height="41" Margin="212,107,0,0" VerticalAlignment="Top" Width="58" Source="Resources/button/tuesday.png"/>
+        <Image x:Name="d5b" HorizontalAlignment="Left" Height="41" Margin="166,150,0,0" VerticalAlignment="Top" Width="51" Source="Resources/button/wendesday.png"/>
 
         <Menu Height="21" VerticalAlignment="Top" Panel.ZIndex="2">
             <MenuItem Header="File">
