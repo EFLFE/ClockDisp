@@ -76,7 +76,21 @@ namespace ClockDisp
                         }
                     }
                 }
-                catch { }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    if (System.Diagnostics.Debugger.IsAttached)
+                    {
+                        throw ex;
+                    }
+                    else
+                    {
+                        App.Current.Dispatcher.Invoke(() => new MessageWindow(
+                            "Update Error",
+                            ex.ToString()).ShowDialog());
+                    }
+#endif
+                }
 
                 timer = 1000 * 60;
                 while (timer > 0)
