@@ -22,4 +22,4 @@
 
 Файл Resources/SdvugReg_7segment_02_lite.ino - предназначен для ардуино и STM32generic (файл проекта для ардуино IDE).
 
-![img](ClockDisp/Resources/P543_v3.png)
+![img](ClockDisp/Resources/Indikator8.jpg)
